@@ -9,7 +9,7 @@ export default function (server: Server, ctx: AppContext) {
   server.com.atproto.identity.verifyMessage(async ({ params }) => {
 
     const didDoc = await ctx.plcClient.getDocumentData(params.did)
-    const messageBytes = new TextEncoder().encode(params.message)
+    const messageBytes = new TextEncoder().encode(didDoc.did + "\n" + params.message)
     const sigBytes = new Uint8Array(Buffer.from(params.sig, 'hex'))
     const valid = await verifyMessage(didDoc.rotationKeys, messageBytes, sigBytes)
 

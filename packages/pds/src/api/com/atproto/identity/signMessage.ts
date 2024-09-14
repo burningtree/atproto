@@ -27,7 +27,7 @@ export default function (server: Server, ctx: AppContext) {
       }
       const { message } = input.body
 
-      const messageBytes = new TextEncoder().encode(message)
+      const messageBytes = new TextEncoder().encode(auth.credentials.did + "\n" + message)
       const sigBytes = await ctx.plcRotationKey.sign(messageBytes)
       const sigHex = Buffer.from(sigBytes).toString('hex')
 
