@@ -22,9 +22,11 @@ import * as ComAtprotoAdminUpdateSubjectStatus from './types/com/atproto/admin/u
 import * as ComAtprotoIdentityGetRecommendedDidCredentials from './types/com/atproto/identity/getRecommendedDidCredentials'
 import * as ComAtprotoIdentityRequestPlcOperationSignature from './types/com/atproto/identity/requestPlcOperationSignature'
 import * as ComAtprotoIdentityResolveHandle from './types/com/atproto/identity/resolveHandle'
+import * as ComAtprotoIdentitySignMessage from './types/com/atproto/identity/signMessage'
 import * as ComAtprotoIdentitySignPlcOperation from './types/com/atproto/identity/signPlcOperation'
 import * as ComAtprotoIdentitySubmitPlcOperation from './types/com/atproto/identity/submitPlcOperation'
 import * as ComAtprotoIdentityUpdateHandle from './types/com/atproto/identity/updateHandle'
+import * as ComAtprotoIdentityVerifyMessage from './types/com/atproto/identity/verifyMessage'
 import * as ComAtprotoLabelDefs from './types/com/atproto/label/defs'
 import * as ComAtprotoLabelQueryLabels from './types/com/atproto/label/queryLabels'
 import * as ComAtprotoLabelSubscribeLabels from './types/com/atproto/label/subscribeLabels'
@@ -228,9 +230,11 @@ export * as ComAtprotoAdminUpdateSubjectStatus from './types/com/atproto/admin/u
 export * as ComAtprotoIdentityGetRecommendedDidCredentials from './types/com/atproto/identity/getRecommendedDidCredentials'
 export * as ComAtprotoIdentityRequestPlcOperationSignature from './types/com/atproto/identity/requestPlcOperationSignature'
 export * as ComAtprotoIdentityResolveHandle from './types/com/atproto/identity/resolveHandle'
+export * as ComAtprotoIdentitySignMessage from './types/com/atproto/identity/signMessage'
 export * as ComAtprotoIdentitySignPlcOperation from './types/com/atproto/identity/signPlcOperation'
 export * as ComAtprotoIdentitySubmitPlcOperation from './types/com/atproto/identity/submitPlcOperation'
 export * as ComAtprotoIdentityUpdateHandle from './types/com/atproto/identity/updateHandle'
+export * as ComAtprotoIdentityVerifyMessage from './types/com/atproto/identity/verifyMessage'
 export * as ComAtprotoLabelDefs from './types/com/atproto/label/defs'
 export * as ComAtprotoLabelQueryLabels from './types/com/atproto/label/queryLabels'
 export * as ComAtprotoLabelSubscribeLabels from './types/com/atproto/label/subscribeLabels'
@@ -729,6 +733,18 @@ export class ComAtprotoIdentityNS {
     )
   }
 
+  signMessage(
+    data?: ComAtprotoIdentitySignMessage.InputSchema,
+    opts?: ComAtprotoIdentitySignMessage.CallOptions,
+  ): Promise<ComAtprotoIdentitySignMessage.Response> {
+    return this._client.call(
+      'com.atproto.identity.signMessage',
+      opts?.qp,
+      data,
+      opts,
+    )
+  }
+
   signPlcOperation(
     data?: ComAtprotoIdentitySignPlcOperation.InputSchema,
     opts?: ComAtprotoIdentitySignPlcOperation.CallOptions,
@@ -761,6 +777,18 @@ export class ComAtprotoIdentityNS {
       'com.atproto.identity.updateHandle',
       opts?.qp,
       data,
+      opts,
+    )
+  }
+
+  verifyMessage(
+    params?: ComAtprotoIdentityVerifyMessage.QueryParams,
+    opts?: ComAtprotoIdentityVerifyMessage.CallOptions,
+  ): Promise<ComAtprotoIdentityVerifyMessage.Response> {
+    return this._client.call(
+      'com.atproto.identity.verifyMessage',
+      params,
+      undefined,
       opts,
     )
   }

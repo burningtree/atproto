@@ -1,0 +1,37 @@
+{
+  "lexicon": 1,
+  "id": "com.atproto.identity.verifyMessage",
+  "defs": {
+    "main": {
+      "type": "query",
+      "description": "Verify the signature of arbitrary message",
+      "parameters": {
+        "type": "params",
+        "required": ["did", "message", "sig"],
+        "properties": {
+          "did": {
+            "type": "string",
+            "format": "did"
+          },
+          "message": {
+            "type": "string"
+          },
+          "sig": {
+            "type": "string"
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "valid": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

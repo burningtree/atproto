@@ -26,9 +26,11 @@ import * as ComAtprotoAdminUpdateSubjectStatus from './types/com/atproto/admin/u
 import * as ComAtprotoIdentityGetRecommendedDidCredentials from './types/com/atproto/identity/getRecommendedDidCredentials'
 import * as ComAtprotoIdentityRequestPlcOperationSignature from './types/com/atproto/identity/requestPlcOperationSignature'
 import * as ComAtprotoIdentityResolveHandle from './types/com/atproto/identity/resolveHandle'
+import * as ComAtprotoIdentitySignMessage from './types/com/atproto/identity/signMessage'
 import * as ComAtprotoIdentitySignPlcOperation from './types/com/atproto/identity/signPlcOperation'
 import * as ComAtprotoIdentitySubmitPlcOperation from './types/com/atproto/identity/submitPlcOperation'
 import * as ComAtprotoIdentityUpdateHandle from './types/com/atproto/identity/updateHandle'
+import * as ComAtprotoIdentityVerifyMessage from './types/com/atproto/identity/verifyMessage'
 import * as ComAtprotoLabelQueryLabels from './types/com/atproto/label/queryLabels'
 import * as ComAtprotoLabelSubscribeLabels from './types/com/atproto/label/subscribeLabels'
 import * as ComAtprotoModerationCreateReport from './types/com/atproto/moderation/createReport'
@@ -476,6 +478,17 @@ export class ComAtprotoIdentityNS {
     return this._server.xrpc.method(nsid, cfg)
   }
 
+  signMessage<AV extends AuthVerifier>(
+    cfg: ConfigOf<
+      AV,
+      ComAtprotoIdentitySignMessage.Handler<ExtractAuth<AV>>,
+      ComAtprotoIdentitySignMessage.HandlerReqCtx<ExtractAuth<AV>>
+    >,
+  ) {
+    const nsid = 'com.atproto.identity.signMessage' // @ts-ignore
+    return this._server.xrpc.method(nsid, cfg)
+  }
+
   signPlcOperation<AV extends AuthVerifier>(
     cfg: ConfigOf<
       AV,
@@ -506,6 +519,17 @@ export class ComAtprotoIdentityNS {
     >,
   ) {
     const nsid = 'com.atproto.identity.updateHandle' // @ts-ignore
+    return this._server.xrpc.method(nsid, cfg)
+  }
+
+  verifyMessage<AV extends AuthVerifier>(
+    cfg: ConfigOf<
+      AV,
+      ComAtprotoIdentityVerifyMessage.Handler<ExtractAuth<AV>>,
+      ComAtprotoIdentityVerifyMessage.HandlerReqCtx<ExtractAuth<AV>>
+    >,
+  ) {
+    const nsid = 'com.atproto.identity.verifyMessage' // @ts-ignore
     return this._server.xrpc.method(nsid, cfg)
   }
 }

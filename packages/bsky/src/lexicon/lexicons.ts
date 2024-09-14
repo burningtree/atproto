@@ -696,6 +696,39 @@ export const schemaDict = {
       },
     },
   },
+  ComAtprotoIdentitySignMessage: {
+    lexicon: 1,
+    id: 'com.atproto.identity.signMessage',
+    defs: {
+      main: {
+        type: 'procedure',
+        description: 'Signs the arbitrary message with a DID rotation key',
+        input: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            required: ['message'],
+            properties: {
+              message: {
+                type: 'string',
+              },
+            },
+          },
+        },
+        output: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            properties: {
+              sig: {
+                type: 'string',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
   ComAtprotoIdentitySignPlcOperation: {
     lexicon: 1,
     id: 'com.atproto.identity.signPlcOperation',
@@ -792,6 +825,43 @@ export const schemaDict = {
                 type: 'string',
                 format: 'handle',
                 description: 'The new handle.',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+  ComAtprotoIdentityVerifyMessage: {
+    lexicon: 1,
+    id: 'com.atproto.identity.verifyMessage',
+    defs: {
+      main: {
+        type: 'query',
+        description: 'Verify the signature of arbitrary message',
+        parameters: {
+          type: 'params',
+          required: ['did', 'message', 'sig'],
+          properties: {
+            did: {
+              type: 'string',
+              format: 'did',
+            },
+            message: {
+              type: 'string',
+            },
+            sig: {
+              type: 'string',
+            },
+          },
+        },
+        output: {
+          encoding: 'application/json',
+          schema: {
+            type: 'object',
+            properties: {
+              valid: {
+                type: 'boolean',
               },
             },
           },
@@ -10514,10 +10584,12 @@ export const ids = {
   ComAtprotoIdentityRequestPlcOperationSignature:
     'com.atproto.identity.requestPlcOperationSignature',
   ComAtprotoIdentityResolveHandle: 'com.atproto.identity.resolveHandle',
+  ComAtprotoIdentitySignMessage: 'com.atproto.identity.signMessage',
   ComAtprotoIdentitySignPlcOperation: 'com.atproto.identity.signPlcOperation',
   ComAtprotoIdentitySubmitPlcOperation:
     'com.atproto.identity.submitPlcOperation',
   ComAtprotoIdentityUpdateHandle: 'com.atproto.identity.updateHandle',
+  ComAtprotoIdentityVerifyMessage: 'com.atproto.identity.verifyMessage',
   ComAtprotoLabelDefs: 'com.atproto.label.defs',
   ComAtprotoLabelQueryLabels: 'com.atproto.label.queryLabels',
   ComAtprotoLabelSubscribeLabels: 'com.atproto.label.subscribeLabels',

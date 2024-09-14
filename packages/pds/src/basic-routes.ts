@@ -28,7 +28,7 @@ export const createRouter = (ctx: AppContext): express.Router => {
       res.status(503).send({ version, error: 'Service Unavailable' })
       return
     }
-    res.send({ version })
+    res.send({ version, type: 'custom' })
   })
 
   return router

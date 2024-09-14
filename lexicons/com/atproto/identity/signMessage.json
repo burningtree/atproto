@@ -1,0 +1,33 @@
+{
+  "lexicon": 1,
+  "id": "com.atproto.identity.signMessage",
+  "defs": {
+    "main": {
+      "type": "procedure",
+      "description": "Signs the arbitrary message with a DID rotation key",
+      "input": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "required": ["message"],
+          "properties": {
+            "message": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "output": {
+        "encoding": "application/json",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "sig": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
